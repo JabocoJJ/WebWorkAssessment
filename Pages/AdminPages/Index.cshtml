@@ -1,0 +1,67 @@
+﻿@page
+@model WebWork.Pages.Employees.IndexModel
+@{
+}
+<h1>:: Employee Creation Page ::</h1>
+<div>
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label>Employee ID</label>
+                <input asp-for="EmployeeRecord.EmployeeID" class="form-control" />
+                <span asp-validation-for="EmployeeRecord.EmployeeID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Employee Name</label>
+                <input asp-for="EmployeeRecord.EmployeeName" class="form-control" />
+                <span asp-validation-for="EmployeeRecord.EmployeeName" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label>Employee Last Name</label>
+                <input asp-for="EmployeeRecord.EmployeeLName" class="form-control" />
+                <span asp-validation-for="EmployeeRecord.EmployeeLName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Employee Station</label>
+                <select asp-for="EmployeeRecord.EmployeeStation" asp-items="Model.Station" type="text" class="form-control" multiple></select>
+                
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeRecord.EmployeeStatus" class="control-label"></label> <br />
+                @for (int i = 0; i < Model.StatusOfEmployee.Count(); i++)
+                {
+                    @Html.RadioButtonFor(model => model.EmployeeRecord.EmployeeStatus, Model.StatusOfEmployee[i], new { @class = "custom-control-inline" })@Model.StatusOfEmployee[i]
+                    <span style="padding-left: 15px;"> </span>
+                }
+                <br />
+                <span asp-validation-for="EmployeeRecord.EmployeeStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeRecord.EmployeeTraining" class="control-label"></label>
+                <br />
+
+                <div>
+                    <input type="checkbox" onClick="toggle(this)" /> Select All<br />
+                </div>
+
+                @for (int i = 0; i < Model.Train.Count; i++)
+                {
+                    @Html.CheckBoxFor(model => model.EmployeeRecord.EmployeeTraining[i], new { @class = "form-check-inline" })@Model.Train[i]
+
+                    <br />
+                }
+            </div>
+            <div class="form-group">
+                <label>Employee Position</label>
+                @Html.DropDownListFor(model => model.EmployeeRecord.EmployeePosition, new SelectList(Model.Position), "Select Level", new { @class = "form-control" })
+                <span asp-validation-for="EmployeeRecord.EmployeePosition" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+</div>
+</div>

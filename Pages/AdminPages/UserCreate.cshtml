@@ -1,0 +1,41 @@
+﻿@page
+@model WebWork.Pages.Users.UserCreateModel
+@{
+}
+<h1>:: Create User Page ::</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+
+            <div class="form-group">
+                <label asp-for="UserMod.FirstName" class="control-label"></label>
+                <input asp-for="UserMod.FirstName" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserMod.UserName" class="control-label"></label>
+                <input asp-for="UserMod.UserName" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserMod.Password" class="control-label"></label>
+                <input asp-for="UserMod.Password" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserMod.Role" class="control-label"></label>
+                @Html.DropDownListFor(model => model.UserMod.Role, new SelectList(Model.URole), "Select Role", new { @class = "form-control", style = "width: 130px" })
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+
+
+        </form>
+    </div>
+
+
+
+</div>

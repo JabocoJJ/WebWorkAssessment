@@ -1,0 +1,74 @@
+﻿@page
+@model WebWork.Pages.Employees.UpdateModel
+@{
+}
+<h1>:: Update Employees Page</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+
+            <input type="hidden" asp-for="EmployeeRec.Id" />
+
+
+            <div class="form-group">
+                <label asp-for="EmployeeRec.EmployeeID" class="control-label"></label>
+                <input type="text" asp-for="EmployeeRec.EmployeeID" class="form-control" />
+                <span asp-validation-for="EmployeeRec.EmployeeID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeRec.EmployeeName" class="control-label"></label>
+                <input type="text" asp-for="EmployeeRec.EmployeeName" class="form-control" />
+                <span asp-validation-for="EmployeeRec.EmployeeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeRec.EmployeeLName" class="control-label"></label>
+                <input type="text" asp-for="EmployeeRec.EmployeeLName" class="form-control" />
+                <span asp-validation-for="EmployeeRec.EmployeeLName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Employee Station</label>
+                <select asp-for="EmployeeRec.EmployeeStation" asp-items="Model.Station" type="text" class="form-control" multiple></select>
+ 
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeRec.EmployeeStatus" class="control-label"></label> <br />
+                @for (int i = 0; i < Model.StatusOfEmployee.Count(); i++)
+                {
+                    @Html.RadioButtonFor(model => model.EmployeeRec.EmployeeStatus, Model.StatusOfEmployee[i], new { @class = "custom-control-inline" })@Model.StatusOfEmployee[i]
+                    <span style="padding-left: 15px;"> </span>
+                }
+
+                <br />
+                <span asp-validation-for="EmployeeRec.EmployeeStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeRec.EmployeeTraining" class="control-label"></label>
+                <br />
+
+                <div>
+                    <input type="checkbox" onClick="toggle(this)" /> Select All<br />
+                </div>
+
+                @for (int i = 0; i < Model.Train.Count; i++)
+                {
+                    @Html.CheckBoxFor(model => model.EmployeeRec.EmployeeTraining[i], new { @class = "form-check-inline" })@Model.Train[i]
+
+                    <br />
+                }
+
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeRec.EmployeePosition" class="control-label"></label>
+                @Html.DropDownListFor(model => model.EmployeeRec.EmployeePosition, new SelectList(Model.Position), "Select Level", new { @class = "form-control" })
+                <span asp-validation-for="EmployeeRec.EmployeePosition" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+
+
+        </form>
+    </div>
+</div>

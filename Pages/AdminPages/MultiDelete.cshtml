@@ -1,0 +1,61 @@
+﻿@page
+@model WebWork.Pages.Employees.MultiDeleteModel
+@{
+}
+<h1>:: Delete Employees ::</h1>
+<div>
+    <form method="post">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Employ[0].EmployeeID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Employ[0].EmployeeName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Employ[0].EmployeeLName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Employ[0].Station)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Employ[0].EmployeeStatus)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Employ[0].Train)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Employ[0].EmployeePosition)
+                    </th>
+
+                    <th>
+                        Select Employees to Delete
+                    </th>
+                </tr>
+            </thead>
+
+            @for (int i = 0; i < Model.Employ.Count(); i++)
+            {
+        <tr>
+            <input type="hidden" asp-for=@Model.Employ[i].Id />
+            <td><input type="hidden" asp-for=@Model.Employ[i].EmployeeID />@Model.Employ[i].EmployeeID</td>
+            <td><input type="hidden" asp-for=@Model.Employ[i].EmployeeName />@Model.Employ[i].EmployeeName</td>
+            <td><input type="hidden" asp-for=@Model.Employ[i].EmployeeLName />@Model.Employ[i].EmployeeLName</td>
+            <td><input type="hidden" asp-for=@Model.Employ[i].Station />@Model.Employ[i].Station</td>
+            <td><input type="hidden" asp-for=@Model.Employ[i].EmployeeStatus />@Model.Employ[i].EmployeeStatus</td>
+            <td><input type="hidden" asp-for=@Model.Employ[i].Train />@Model.Employ[i].Train</td>
+            <td><input type="hidden" asp-for=@Model.Employ[i].EmployeePosition />@Model.Employ[i].EmployeePosition</td>
+            <td>@Html.CheckBoxFor(model => model.IsSelect[i], new { @class = "form-control" })</td>
+        </tr>
+            }
+
+        </table>
+
+        <div>
+            <input type="submit" value="Delete" />
+        </div>
+
+    </form>

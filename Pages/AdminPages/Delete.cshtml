@@ -1,0 +1,53 @@
+﻿@page
+@model WebWork.Pages.Employees.DeleteModel
+@{
+}
+<h1>:: Delete Student Page ::</h1>
+
+<h2 class="text-danger">Are you sure want to delete the record?</h2>
+
+<div class="table-active">
+
+    <div>
+        <label asp-for="EmployeeRec.EmployeeID"></label>
+        <span> : </span>
+        @Model.EmployeeRec.EmployeeID <!--razor code where you access the model from cshtml.cs file-->
+    </div>
+    <div>
+        <label asp-for="EmployeeRec.EmployeeName"></label>
+        <span> : </span>
+        @Model.EmployeeRec.EmployeeID <!--razor code where you access the model from cshtml.cs file-->
+    </div>
+    <div>
+        <label asp-for="EmployeeRec.EmployeeName"></label>
+        <span> : </span>
+        @Model.EmployeeRec.EmployeeName <!--razor code where you access the model from cshtml.cs file-->
+    </div>
+    <div>
+        <label asp-for="EmployeeRec.EmployeeLName"></label>
+        <span> : </span>
+        @Model.EmployeeRec.EmployeeLName <!--razor code where you access the model from cshtml.cs file-->
+    </div>
+    <div>
+        <label>Training: </label>
+        @Model.EmployeeRec.Train <!--razor code where you access the model from cshtml.cs file-->
+    </div>
+    <div>
+        <label>Stations: </label>
+        @Model.EmployeeRec.Station <!--razor code where you access the model from cshtml.cs file-->
+    </div>
+    <div>
+        <label asp-for="EmployeeRec.EmployeePosition"></label>
+        <span> : </span>
+        @Model.EmployeeRec.EmployeePosition <!--razor code where you access the model from cshtml.cs file-->
+    </div>
+
+</div>
+<br />
+<div>
+    <form method="post">
+        <input type="hidden" asp-for="EmployeeRec.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
+</div>
+

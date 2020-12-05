@@ -1,0 +1,80 @@
+﻿@page
+@model WebWork.Pages.Employees.ViewModel
+@{
+}
+<h1>:: Employee Records ::</h1>
+<div>
+    <p>Select Level: </p>
+    <form>
+        <select type="text" asp-for="Position" style="width:50px;">
+            <option>All</option>
+            @foreach(var item in Model.PositionItems)
+            {
+                <option>@item</option>
+            }
+        </select>
+        <div class="form-group">
+            <input type="submit" value="Filter" class="btn btn-primary" />
+        </div>
+    </form>
+
+
+</div>
+<br />
+<div>
+    <table class="table table-active">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeRecord[0].EmployeeID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeRecord[1].EmployeeName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeRecord[2].EmployeeLName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeRecord[3].EmployeeStation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeRecord[4].EmployeeStatus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeRecord[5].EmployeeTraining)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeRecord[6].EmployeePosition)
+                </th>
+                <th>
+                    Actions
+                </th>
+
+
+            </tr>
+        </thead>
+
+
+        @for (int i = 0; i < Model.EmployeeRecord.Count; i++)
+        {
+    <tr>
+        <td>@Model.EmployeeRecord[i].EmployeeID</td>
+        <td>@Model.EmployeeRecord[i].EmployeeName</td>
+        <td>@Model.EmployeeRecord[i].EmployeeLName</td>
+        <td>@Model.EmployeeRecord[i].Station</td>
+        <td>@Model.EmployeeRecord[i].EmployeeStatus</td>
+        <td>@Model.EmployeeRecord[i].Train</td>
+        <td>@Model.EmployeeRecord[i].EmployeePosition</td>
+        <td>
+        <a asp-page="/AdminPages/Update" asp-route-id="@Model.EmployeeRecord[i].Id">Update</a>
+        <a asp-page="/AdminPages/Delete" asp-route-id="@Model.EmployeeRecord[i].Id">Delete</a>
+        </td>
+
+    </tr>
+
+
+                
+
+        }
+    </table>
+</div>
