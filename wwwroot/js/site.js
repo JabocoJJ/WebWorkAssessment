@@ -10,3 +10,11 @@ function toggle(source) {
             checkBoxes[i].checked = source.checked;
     }
 }
+function showAdList() {
+    var x = document.getElementById("adList");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+};
