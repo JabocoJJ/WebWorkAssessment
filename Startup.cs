@@ -25,7 +25,7 @@ namespace WebWork
         {
             services.AddRazorPages();
             services.AddSession(o => {
-                o.Cookie.Name = ".Default.Session"
+                o.Cookie.Name = ".Default.Session";
                 o.IdleTimeout = TimeSpan.FromSeconds(180);//change 120 to any timespan
                 o.Cookie.HttpOnly = true;
                 o.Cookie.IsEssential = true;
